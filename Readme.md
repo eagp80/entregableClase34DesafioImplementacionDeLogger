@@ -1,5 +1,5 @@
 
-# CORRESPONDE  A ENTREGABLE CLASE 32 Desafio Mocking Y Manejo De Errores
+# CORRESPONDE  A ENTREGABLE CLASE 32. Desafio: Implementacion de logger.
 ###  RUTAS
         - Ruta de inicio, de entrada a la api (redirige al login): 
         http://localhost:8000/api/v1/
@@ -36,14 +36,12 @@
         Para la paginación desde mongo atlas con limit, sort y query (método GET):
         http://localhost:8000/api/v1/views/products?page=1&limit=3&sort={"code":1}&query={"description": "Desde fromulario con socket"}
 ## Consigna. Se está requiriendo lo siguiente:
-- Se aplicará un módulo de mocking y un manejador de errores a tu servidor actual.
+- Basado en nuestro proyecto principal, implementar un logger.
 
 ### TESTEO:
-- Se visitará el endpoint /mockingproducts y deberá corroborarse una respuesta de 50 productos generados con el formato de un producto real del proyecto.
-
-- Se intentará crear un producto con todos los datos válidos, el producto debe crearse satisfactoriamente.
-
-- Se intentará crear un producto  con todos los campos menos el título y el precio, los cuales deberían ser requeridos, por lo tanto, se debe recibir un error customizado, en consola debe aparecer una lista de las propiedades requeridas y los tipos (como visto en clase) para reconocer en qué propiedades no se enviaron los datos.
+- Se revisará que la estructura del servidor en general esté implementada con el logger de winston.
+- Se ejecutará el proyecto en entorno de desarrollo y entorno productivo para corroborar que se implementen los diferentes loggers según el entorno.
+- Se probará un endpoint (proporcionado por el alumno). para revisar que los logs se escriban correctamente, tanto para consola (desarrollo) como para consola y archivos (productivo).
 
 
 ### Formato
@@ -51,12 +49,16 @@
 - Link al repositorio de Github con el proyecto completo, sin la carpeta de node_modules. ((Hecho)).
 
 ### Sugerencias
-- Céntrate solo en los errores más comunes.
+- La ruta loggerTest es muy importante para que tu entrega pueda ser calificada de manera rápida y eficiente. ¡No olvides colocarla!
 
 ### Aspectos a incluir
-- Generar un módulo de Mocking para el servidor, con el fin de que, al inicializarse pueda generar y entregar 100 productos con el mismo formato que entregaría una petición de Mongo. Ésto solo debe ocurrir en un endpoint determinado (‘/mockingproducts’).
-
-- Además, generar un customizador de errores y crear un diccionario para tus errores más comunes al crear un producto, agregarlo al carrito, etc.
+-Primero, definir un sistema de niveles que tenga la siguiente prioridad (de menor a mayor):
+debug, http, info, warning, error, fatal.
+- Después implementar un logger para desarrollo y un logger para producción, el logger de desarrollo deberá loggear a partir del nivel debug, sólo en consola.
+- Sin embargo, el logger del entorno productivo debería loggear sólo a partir de nivel info.
+- Además, el logger deberá enviar en un transporte de archivos a partir del nivel de error en un nombre “errors.log”.
+- Agregar logs de valor alto en los puntos importantes de tu servidor (errores, advertencias, etc) y modificar los console.log() habituales que tenemos para que muestren todo a partir de winston.
+- Crear un endpoint /loggerTest que permita probar todos los logs.
 
 ## Rutas para servidor con file-system en puerto 8081 (se deshabilito, es decir, se comentó en el código):
 
