@@ -1,5 +1,5 @@
 
-# CORRESPONDE  A ENTREGABLE CLASE 32. Desafio: Implementacion de logger.
+# CORRESPONDE  A ENTREGABLE CLASE 34. Desafio: Implementacion de logger.
 ###  RUTAS
         - Ruta de inicio, de entrada a la api (redirige al login): 
         http://localhost:8000/api/v1/
