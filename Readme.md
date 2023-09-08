@@ -4,6 +4,12 @@
         - Ruta de inicio, de entrada a la api (redirige al login): 
         http://localhost:8000/api/v1/
 
+        - Ruta de mocking, generando 50 productos con faker en localhost:8081/mockingproducts.
+
+        - Ruta de creacion de producto con postmnan mediante metodo post y raw json http://localhost:8000/api/v1/products/ .
+        
+        - La ruta anterior valida si las propiedades requeridas del producto a crear  son enviadas  y envia mensaje personalizado con error-handler y Http-Status-Code.
+
         - Ruta de usuario actual logueado (muestra usuario examinando token):
         http://localhost:8000/api/v1/session/current
 
@@ -14,6 +20,11 @@
 ### ADEMÁS TIENE: MANEJO DE VARIABLES DE ENTORNO CON dotenv CAMBIO DE VARIABLES DE ENTORNO DURANTE EJECUCIÓN CON cross-env, SE MUESTRAN RUTAS EN TABLA EN CONSOLA LADO BACKEND CON express-routemap, (PRONTO TENDRÁ MANEJO DE ARCHIVOS CON MULTER).
 
 ### Como usar la app:
+<h2> Ruta de mocking, generando 50 productos con faker en localhost:8081/mockingproducts </h2>
+
+<h2> Ruta de creacion de producto con postmnan mediante metodo post y raw json http://localhost:8000/api/v1/products/</h2>
+<h2>La ruta anterior valida si las propiedades requeridas del producto a crear  son enviadas  y envia mensaje personalizado con error-handler y Http-Status-Code</h2>
+
 <h2> Ruta de inicio, de entrada a la api:   </h2>
 <h4> http://localhost:8000/api/v1/  la cual redirige al login </h4>
 

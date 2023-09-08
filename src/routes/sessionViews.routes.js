@@ -41,18 +41,20 @@ class SessionViewsRoutes {
       }
     })
 
-// TODO: Agregar middleware AUTH
     this.router.get(`${this.path}profile`,
     [passportCall("jwt"), 
     handlePolicies(["USER", "ADMIN", "GOLD", "SILVER", "BRONCE"])], 
     async (req, res) =>{
       try{
-        const user = req.session.user?._doc || "usuario no logueado";
+        const user = req.session.user?._doc || req.user.user|| "usuario no logueado";
         console.log("🚀 ~ file: sessionViews.routes.js:38 ~ SessionViewsRoutes ~ this.router.get ~ user:", user)
         res.render("profile", {
          email:  user.email,
+         role: user.role,
          age: user.age,
          last_name: user.last_name,
+         first_name: user.first_name,
+         cart: user.cart,
           carrito: {
             carritoId: "carrito-1",
             productos: [{ productoId: "1", nombre: "camisa" }],

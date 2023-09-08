@@ -89,7 +89,6 @@ class CartsMongoRoutes {
     //*************************************************************************************
     //*************************************************************************************
     this.router.post(`${this.path}/:cid/products/:pid`, async (req, res) => {
-      // return res.json({ message: `cartsMongo POST no implementado aun` });
       try {
         // TODO: HACER VALIDACIONES 
         const cid=req.params.cid;

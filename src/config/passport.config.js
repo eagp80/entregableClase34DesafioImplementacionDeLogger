@@ -28,7 +28,6 @@ const initializePassport = () => {
   passport.use('registerpassport', new LocalStrategy(
     {passReqToCallback:true, usernameField:'email'}, async (req,username,password,done)=>{
       console.log("entre a registerpassport");
-      console.log(req.body);
       const {first_name, last_name, email,age} = req.body;
       const role= 'USER';
       try {
@@ -80,7 +79,6 @@ const initializePassport = () => {
           if(profile._json?.email===null){profile._json.email=profile._json?.url}
           //validar si email es null cambiar email:login o email o url o html_url 
           let user = await userModel.findOne({ email: profile._json?.email });
-          console.log("🚀 ~ file: passport.config.js:21 ~ user:", user)
           
           if (!user) {
             console.log("entro a addNewUser");
@@ -127,15 +125,12 @@ const initializePassport = () => {
         secretOrKey: SECRET_JWT,
       },
       async (jwtPayload, done) => {
-        console.log(
-          "🚀 ~ file: passport.config.js:20 ~ jwtPayload:",
-          jwtPayload
-        );
+
         try {
           if (ROLES.includes(jwtPayload.role)) {
             return done(null, jwtPayload);
           }
-          return done(null, jwtPayload);
+          return done(null, jwtPayload);//ojo revisar porque se repite lo de arriba
         } catch (error) {
           return done(error);
         }

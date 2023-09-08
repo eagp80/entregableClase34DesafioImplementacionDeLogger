@@ -53,8 +53,8 @@ class ViewsMongoRoutes {
 
         }
       })
-      console.log(JSON.stringify(cartsMongoMapped));    
-      cartsMongoMapped.map(item =>  console.log("Carrito:",item.i,item.products));     
+      // console.log(JSON.stringify(cartsMongoMapped));    
+      // cartsMongoMapped.map(item =>  console.log("Carrito:",item.i,item.products));     
       res.render("carts", { cartsMongo: cartsMongoMapped });
     });
 
@@ -171,12 +171,13 @@ class ViewsMongoRoutes {
       }else{ req.user.role = "USER" }
 
         res.render("products", {
-          rol: req.session?.user?.rol,
-          name: req.session?.user?.name,
-          first_name: req.session?.user?.first_name,
-          last_name: req.session?.user?.last_name,
-          email: req.session?.user?.email,
-          age: req.session?.user?.age,
+          role: req.session?.user?.rol||req.user.user.role,
+          name: req.session?.user?.name||req.user.user.name,
+          first_name: req.session?.user?.first_name||req.user.user.first_name,
+          last_name: req.session?.user?.last_name||req.user.user.last_name,
+          email: req.session?.user?.email||req.user.user.email,
+          cart: req.user.user.cart,
+          age: req.session?.user?.age||req.user.user.age,
           payload: docs,
           totalPages: totalPages,
           prevPage: prevPage,

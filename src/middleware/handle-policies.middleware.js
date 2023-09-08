@@ -9,10 +9,7 @@ function handlePolicies(policies) {
 
     // Usar Passport para autenticar al usuario y verificar el rol
     passport.authenticate("jwt", { session: false }, (err, userJWT, info) => {
-      console.log(
-        "🚀 ~ file: handle-policies.middleware.js:12 ~ passport.authenticate ~ userJWT:",
-        userJWT
-      );
+      
       if (err) {
         return next(err);
       }

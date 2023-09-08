@@ -96,7 +96,10 @@ class SessionRoutes {//no es un Router pero adentro tiene uno
         // };
         //req.session.user=a._doc; //se hace asi porque los tres puntitos traen un monton de info incluyendo objeto _doc donde viene el user
         const signUser = {
+          last_name: findUser.last_name,  
+          first_name: findUser.first_name,  
           email,
+          age: findUser.age,
           role: findUser.role,
           id: findUser._id,
           cart: findUser.cart,
@@ -114,7 +117,7 @@ class SessionRoutes {//no es un Router pero adentro tiene uno
         console.log(req.user);
         // TODO: RESPUESTA DEL TOKEN ALMACENADO EN LA COOKIE
          res.cookie("token", token, { maxAge: 1000000, httpOnly: true });
-        return res.send("login sucess with jwt and cookie");
+        //return res.send("login sucess with jwt and cookie");
         return res.redirect(`../views/products`)//*****activatr este depues***/
     
         return res.json({ message: `welcome $${email},login success`, token });//para postman
@@ -171,7 +174,7 @@ class SessionRoutes {//no es un Router pero adentro tiene uno
     this.router.get(`${this.path}/githubcallback`, passport.authenticate('github',{failureRedirect:'/api/v1/login'}), async (req,res)=>{
       req.session.user=req.user;
       req.user.user=req.user;
-      console.log("entre a github/callback");
+      console.log("entre a githubcallback");
       console.log(req.user);
       let email = req.user.email;
       const findUser = await userModel.findOne({ email });
@@ -186,9 +189,9 @@ class SessionRoutes {//no es un Router pero adentro tiene uno
 
       res.cookie("token", token, { maxAge: 1000000, httpOnly: true });
 
-      res.send("login correct with github");
+      //res.send("login correct with github");
 
-      //res.redirect(`../views/products`);
+      res.redirect(`../views/products`);
     })
 
   
