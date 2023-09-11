@@ -4,7 +4,14 @@
         - Ruta de inicio, de entrada a la api (redirige al login): 
            http://localhost:8000/api/v1/
 
-        - Rutas para las pruebas de logger con winston son ( localhost:8000) api/v1/loggerTest/fatal, api/v1/loggerTest/error, api/v1/loggerTest/warning, api/v1/loggerTest/info, api/v1/loggerTest/http, api/v1/loggerTest/debug. Se debe estar logueado.
+        - Rutas para las pruebas de logger con winston son ( localhost:8000):
+            - api/v1/loggerTest/fatal, 
+            - api/v1/loggerTest/error, 
+            - api/v1/loggerTest/warning, 
+            - api/v1/loggerTest/info, 
+            - api/v1/loggerTest/http, 
+            - api/v1/loggerTest/debug. 
+            - Se debe estar logueado.
 
         - Ruta de mocking, generando 50 productos con faker en localhost:8081/mockingproducts.
 
