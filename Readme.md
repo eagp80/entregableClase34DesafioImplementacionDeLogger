@@ -2,7 +2,9 @@
 # CORRESPONDE  A ENTREGABLE CLASE 34. Desafio: Implementacion de logger.
 ###  RUTAS
         - Ruta de inicio, de entrada a la api (redirige al login): 
-        http://localhost:8000/api/v1/
+           http://localhost:8000/api/v1/
+
+        - Rutas para las pruebas de logger con winston son ( localhost:8000) api/v1/loggerTest/fatal, api/v1/loggerTest/error, api/v1/loggerTest/warning, api/v1/loggerTest/info, api/v1/loggerTest/http, api/v1/loggerTest/debug. Se debe estar logueado.
 
         - Ruta de mocking, generando 50 productos con faker en localhost:8081/mockingproducts.
 
@@ -20,7 +22,9 @@
 ### ADEMÁS TIENE: MANEJO DE VARIABLES DE ENTORNO CON dotenv CAMBIO DE VARIABLES DE ENTORNO DURANTE EJECUCIÓN CON cross-env, SE MUESTRAN RUTAS EN TABLA EN CONSOLA LADO BACKEND CON express-routemap, (PRONTO TENDRÁ MANEJO DE ARCHIVOS CON MULTER).
 
 ### Como usar la app:
-<h2> Ruta de mocking, generando 50 productos con faker en localhost:8081/mockingproducts </h2>
+<h2> Deberá loguearse en localhost:8000/api/v1 </h2>
+<h2>Las rutas para las pruebas de logger con winston son ( localhost:8000) api/v1/loggerTest/fatal, api/v1/loggerTest/error, api/v1/loggerTest/warning, api/v1/loggerTest/info, api/v1/loggerTest/http, api/v1/loggerTest/debug</h2>
+
 
 <h2> Ruta de creacion de producto con postmnan mediante metodo post y raw json http://localhost:8000/api/v1/products/</h2>
 <h2>La ruta anterior valida si las propiedades requeridas del producto a crear  son enviadas  y envia mensaje personalizado con error-handler y Http-Status-Code</h2>
