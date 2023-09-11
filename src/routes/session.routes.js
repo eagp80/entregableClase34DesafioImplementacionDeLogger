@@ -7,7 +7,6 @@ import passport from "passport";
 import { generateJWT } from "../utils/jwt.js";
 
 import { passportCall } from "../utils/jwt.js";
-import authorization from "../middleware/authorization.middleware.js";
 import handlePolicies from "../middleware/handle-policies.middleware.js";
 
 
