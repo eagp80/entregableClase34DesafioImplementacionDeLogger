@@ -143,10 +143,10 @@ class CartsMongoRoutes {
             `Method: ${req.method}, url: ${
               req.url
             } - time: ${new Date().toLocaleTimeString()
-            } verificando antes de entrar a 3 o 4 `
+            } Comparando cada producto en carrito con pid pasado por parametro en url, antes de entrar a 3 o 4 `
           );  
             //console.log("verificando antes de entrar a 3 o 4")
-            const idComp = new ObjectId(pid);
+            //const idComp = new ObjectId(pid);
             var existeProduct = false;
             var indexOfProducts= 0;
             cartMongoData.products.forEach((element,i) => {  
@@ -156,41 +156,34 @@ class CartsMongoRoutes {
                 } - time: ${new Date().toLocaleTimeString()
                 } product: ${element.product.toString()} `
               );       
-              //console.log(element.product.toString());
               req.logger.debug(
                 `Method: ${req.method}, url: ${
                   req.url
                 } - time: ${new Date().toLocaleTimeString()
                 } pid: ${pid} `
               );  
-              //console.log(pid);  
 
               if(element.product.toString() === pid){//este if solo funciono con toString() en ambos
                 req.logger.debug(
                   `Method: ${req.method}, url: ${
                     req.url
                   } - time: ${new Date().toLocaleTimeString()
-                  } entro al if `
+                  } el producto ya lo tiene e carrito`
                 );  
                 //console.log("entro al ifffffff");
                 existeProduct= true;
                 indexOfProducts=i;              
               }              
             }); 
-            req.logger.info(
-              `Method: ${req.method}, url: ${
-                req.url
-              } - time: ${new Date().toLocaleTimeString()
-              } existe Producto `
-            );  
+
             //console.log(existeProduct);           
-            if(existeProduct){//if 3 situacion 3
+            if(existeProduct){//if 3 situacion 3, si ya se tiene el producto incrementamos quantity
                   cartMongoData.products[indexOfProducts].quantity++;
                   req.logger.debug(
                     `Method: ${req.method}, url: ${
                       req.url
                     } - time: ${new Date().toLocaleTimeString()
-                    }  entrooooo en caso 3 `
+                    }  entrooooo en caso 3, ya tiene el producto se incrementa quantity `
                   );
                   //console.log("entrooooo en 3");
                   cartsMongoModel.findByIdAndUpdate(cid, {products: cartMongoData.products }, { new: true })
@@ -216,7 +209,7 @@ class CartsMongoRoutes {
                 `Method: ${req.method}, url: ${
                   req.url
                 } - time: ${new Date().toLocaleTimeString()
-                } entro en caso 4`
+                } entro en caso 4, no tiene el producto, se agregara un nuevo ObjectId del producto en el carrito`
               );    
               // console.log("entrooooo en 4")
                   const productNewId= new ObjectId(pid);
