@@ -1,12 +1,9 @@
 import { Router } from "express";
-import userModel from "../dao/models/user.model.js";
-
 import { passportCall } from "../utils/jwt.js";
 import handlePolicies from "../middleware/handle-policies.middleware.js";
-
 import { API_VERSION } from "../config/config.js";
-import { createHashValue, isValidPasswd } from "../utils/encrypt.js";
-import passport from "passport";
+
+
 //********* /api/v1/loggerTest/
 
 class LoggerTestRoutes {//no es un Router pero adentro tiene uno
@@ -15,11 +12,9 @@ class LoggerTestRoutes {//no es un Router pero adentro tiene uno
   api_version= API_VERSION;
 
   constructor() {
-    this.initUserRoutes();
+    this.initLoggerTestRoutes();
   }
-
-  initUserRoutes() {//  api/v1/loggerTest/
- 
+  initLoggerTestRoutes() {//  api/v1/loggerTest/ 
     this.router.get(`${this.path}/error`, 
     [passportCall("jwt"), handlePolicies(["USER"])],    
     (req, res) =>{    
@@ -86,10 +81,7 @@ class LoggerTestRoutes {//no es un Router pero adentro tiene uno
       } finally {  
         return res.send("¡Prueba realizada. Revisar logger fatal!");
        }
-
     });
- 
-
   }  
 }
 export default LoggerTestRoutes;
