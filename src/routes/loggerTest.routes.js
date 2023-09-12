@@ -23,31 +23,51 @@ class LoggerTestRoutes {//no es un Router pero adentro tiene uno
     this.router.get(`${this.path}/error`, 
     [passportCall("jwt"), handlePolicies(["USER"])],    
     (req, res) =>{    
-        req.logger.error("Petición GET recibida en /error");
+        req.logger.error(
+          `Method: ${req.method}, url: ${
+            req.url
+          } - time: ${new Date().toLocaleTimeString()}`
+        );
         return res.send("¡Prueba realizada. Revisar logger error!");  
     });
     this.router.get(`${this.path}/warning`, 
     [passportCall("jwt"), handlePolicies(["USER"])],    
     (req, res) =>{    
-        req.logger.warning("Petición GET recibida en /warning");
+        req.logger.warning(
+          `Method: ${req.method}, url: ${
+            req.url
+          } - time: ${new Date().toLocaleTimeString()}`
+        );
         return res.send("¡Prueba realizada. Revisar logger warning!");  
     });
     this.router.get(`${this.path}/info`, 
     [passportCall("jwt"), handlePolicies(["USER"])],    
     (req, res) =>{    
-        req.logger.info("Petición GET recibida en/info");
+        req.logger.info(
+          `Method: ${req.method}, url: ${
+            req.url
+          } - time: ${new Date().toLocaleTimeString()}`
+        );
         return res.send("¡Prueba realizada. Revisar logger info!");  
     });
     this.router.get(`${this.path}/http`, 
     [passportCall("jwt"), handlePolicies(["USER"])],    
     (req, res) =>{    
-        req.logger.http("Petición GET recibida en /http");
+        req.logger.http(
+          `Method: ${req.method}, url: ${
+            req.url
+          } - time: ${new Date().toLocaleTimeString()}`
+        );
         return res.send("¡Prueba realizada. Revisar logger http!");  
     });
     this.router.get(`${this.path}/debug`, 
     [passportCall("jwt"), handlePolicies(["USER"])],    
     (req, res) =>{    
-        req.logger.debug("Petición GET recibida en /debug");
+        req.logger.debug(
+          `Method: ${req.method}, url: ${
+            req.url
+          } - time: ${new Date().toLocaleTimeString()}`
+        );
         return res.send("¡Prueba realizada. Revisar logger debug!");  
     });
     
@@ -58,7 +78,11 @@ class LoggerTestRoutes {//no es un Router pero adentro tiene uno
         try{
             throw new Error(" - Error Fatal en GET , NOS TUMBA LA API");
       } catch (error) {
-        req.logger.fatal(`Petición GET recibida en /fatal con ERROR: ${error.message}`);          
+        req.logger.fatal(
+          `Method: ${req.method}, url: ${
+            req.url
+          } - time: ${new Date().toLocaleTimeString()
+          } con ERROR: ${error.message}`);          
       } finally {  
         return res.send("¡Prueba realizada. Revisar logger fatal!");
        }
